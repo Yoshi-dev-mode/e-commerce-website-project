@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    height: 70vh ;
+}
+
+.header {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.discover {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.wines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 670px;
+}
+
+.hover-buttons {
+    transition: 200ms all ease-in-out;
+}
+
+
+.sites {
+    height: calc(100vh - 69px);
+}
+
+/* 
+ !- For overlay hover
+*/
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1.3rem;
+    transition: 300ms opacity ease-in-out;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overlay:hover {
+    opacity: 1;
+}
+
+.image-size {
+ width: 300px;
+ height: 300px;
+}
+
+.image {
+    object-fit: cover;
+    height: 150px;
+}
+
+
