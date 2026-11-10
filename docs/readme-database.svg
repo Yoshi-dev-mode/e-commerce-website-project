@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="199" height="28" viewBox="0 0 199 28">
+  <title>DATABASE — POSTGRESQL</title>
+  <path fill="#50545b" d="M0 0h87v28H0z"/>
+  <path fill="#3558b9" d="M87 0h112v28h-112z"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana, sans-serif" font-size="10.5" letter-spacing="1.2">
+    <text x="43.5" y="18">DATABASE</text>
+    <text x="143" y="18" font-weight="700">POSTGRESQL</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="28" viewBox="0 0 190 28">
+  <title>LANGUAGE — TYPESCRIPT</title>
+  <path fill="#50545b" d="M0 0h86v28H0z"/>
+  <path fill="#2465a9" d="M86 0h104v28h-104z"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana, sans-serif" font-size="10.5" letter-spacing="1.2">
+    <text x="43" y="18">LANGUAGE</text>
+    <text x="138" y="18" font-weight="700">TYPESCRIPT</text>
+  </g>
+</svg>
