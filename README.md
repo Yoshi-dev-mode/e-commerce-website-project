@@ -1,52 +1,78 @@
-# Yoshiya storefront
+<h1 align="center">Yoshiya Storefront</h1>
 
-Yoshiya is a food and drinks storefront built with Next.js and Supabase Postgres. The original 15 menu items, prices and product images are included.
+<p align="center">
+  A full-stack restaurant storefront, from menu discovery to order confirmation.
+</p>
 
-## Run locally
+<p align="center">
+  <strong>Next.js · React · TypeScript · Supabase Postgres</strong>
+</p>
+
+<p align="center">
+  <a href="#try-it-locally">Try it locally</a> ·
+  <a href="#engineering-highlights">Engineering highlights</a> ·
+  <a href="#connect-supabase">Connect Supabase</a>
+</p>
+
+![Yoshiya storefront homepage with a warm cream layout and photographs of a burger, fried chicken, fries, and a mocha frappe](docs/storefront-preview.webp)
+
+## The project
+
+Yoshiya rebuilds an earlier food and drinks storefront around a complete ordering flow. Browse 15 menu items, filter by category or search by name, open product details, and add items to a bag that survives a refresh. Scroll through the featured burger to see its layers assemble from the original product photo.
+
+## Engineering highlights
+
+| Area | Implementation |
+| --- | --- |
+| **Motion and accessibility** | Scroll position drives the burger assembly. The section shows the assembled burger when reduced motion is enabled. [View component](components/burger-assembly.tsx) |
+| **Demo without credentials** | A bundled catalog and simulated receipt let reviewers try the ordering flow locally. Demo orders do not store submitted details. [View data layer](lib/store.ts) |
+| **Checkout validation** | The API validates contact details and quantities. Postgres rechecks availability and prices and writes the order and line items in one transaction. [View order route](app/api/orders/route.ts) |
+| **Safe retries** | Submitting the same request ID with the same details returns the existing receipt. A reused ID with different details returns a conflict. [View SQL migration](supabase/migrations/20261109000100_storefront.sql) |
+| **Data access** | Anonymous users can read available products. The server-side checkout uses a separate key to submit orders. [View access policies](supabase/migrations/20261109000100_storefront.sql) |
+
+## Try it locally
 
 Use Node.js 20.9 or later.
 
 ```sh
+git clone --branch codex/storefront-rebuild https://github.com/Yoshi-dev-mode/e-commerce-website-project.git
+cd e-commerce-website-project
 npm ci
 npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000). With all Supabase variables unset, the store uses the bundled catalog and simulates checkout without storing the submitted details. The bag is stored in the browser.
+Open the storefront with all Supabase variables unset to start in demo mode. Add an item, refresh to check that the bag persists, then submit an order with sample details to see the receipt. [Open localhost:3000](http://localhost:3000)
 
 ```sh
 npm run check
 npm run build
 ```
 
-## Connect the imported Supabase project
+## Connect Supabase
 
-The schema and catalog are already applied to [Yoshiya Storefront](https://supabase.com/dashboard/project/nxxdelopqfkvioftavxb). Copy `.env.example` to `.env.local` and enter the following values from the project's API settings.
+Use a Supabase project with the storefront schema and seed data applied. For a new project, link it with the Supabase CLI, review the dry run, and apply the two migrations. [View migrations](supabase/migrations)
 
-- `SUPABASE_URL` is `https://nxxdelopqfkvioftavxb.supabase.co`.
-- `SUPABASE_PUBLISHABLE_KEY` uses the `sb_publishable_…` key.
-- `SUPABASE_SECRET_KEY` uses the `sb_secret_…` key. Keep it server-side and out of source control.
+```sh
+supabase init
+supabase login
+supabase link --project-ref YOUR_PROJECT_REF
+supabase db push --dry-run
+supabase db push
+```
 
-Restart Next.js after saving the file. Supabase serves the catalog and stores order requests. Orders start as `received`. The store arranges payment after confirming an order request. Deploy the app with a Next.js server and the same environment variables.
+Run `supabase init` once if the checkout lacks a Supabase configuration. Copy `.env.example` to `.env.local`, fill in the following values from your Supabase project settings, and restart Next.js. [View environment template](.env.example)
 
-## Apply the migrations to another project
+| Variable | Purpose |
+| --- | --- |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_PUBLISHABLE_KEY` | Catalog read access |
+| `SUPABASE_SECRET_KEY` | Server-only order submission. Keep this key out of source control. |
 
-1. Open a Supabase project intended for this store. The migrations create `products`, `orders` and `order_items` in the public schema. Review any existing tables with those names before applying them.
-2. With the [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/getting-started), run the commands below from this repository. Review the dry run before applying.
+Orders enter the database with a `received` status. The store arranges payment after confirming the request. Deploy with a Next.js server and the same environment variables.
 
-   ```sh
-   supabase init
-   supabase login
-   supabase link --project-ref YOUR_PROJECT_REF
-   supabase db push --dry-run
-   supabase db push
-   ```
+<details>
+<summary>Catalog migration notes</summary>
 
-   `supabase init` is only needed once. The first migration creates the schema and policies. The second imports the catalog.
+The seed carries forward 13 products from the earlier PostgreSQL database and two drinks from the repository seed. It retains the source records in the restricted `legacy_record` column, standardizes display names, shortens descriptions, and interprets the original dollar prices as USD. The rebuilt storefront stores each bag in the shopper's browser.
 
-3. Set `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` and `SUPABASE_SECRET_KEY` in `.env.local` using the new project's API settings. Restart Next.js and verify the menu loads.
-
-## Data carried forward
-
-- The migration carries over all 13 products found in the original PostgreSQL database and two additional drinks from the repository seed. The exact source records are retained in the private `legacy_record` column. The storefront uses standardized display names and shorter descriptions, and interprets the original dollar prices as USD.
-- The original shared `variants` cart was empty when checked. The new app uses browser-local bags.
-- Anonymous Supabase users can read available products. The checkout API submits orders through a server-only RPC. The RPC checks current prices and availability, creates the order and line items in one transaction, and returns the same receipt for a retry with the same request ID and details.
+</details>
