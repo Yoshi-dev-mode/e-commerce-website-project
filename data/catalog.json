@@ -1,0 +1,137 @@
+[
+  {
+    "id": "burger",
+    "name": "Burger",
+    "category": "Meals",
+    "description": "Beef patty, melted cheese and crisp lettuce on a brioche bun.",
+    "image_path": "/assets/burger.jpg",
+    "price_cents": 1232,
+    "sort_order": 0
+  },
+  {
+    "id": "fried-chicken",
+    "name": "Fried Chicken",
+    "category": "Meals",
+    "description": "Seasoned chicken with a crisp golden coating.",
+    "image_path": "/assets/friedchicken.jpg",
+    "price_cents": 829,
+    "sort_order": 1
+  },
+  {
+    "id": "fries",
+    "name": "Fries",
+    "category": "Sides",
+    "description": "Golden, lightly salted fries.",
+    "image_path": "/assets/fries.jpg",
+    "price_cents": 327,
+    "sort_order": 2
+  },
+  {
+    "id": "nuggets",
+    "name": "Nuggets",
+    "category": "Sides",
+    "description": "Bite-size pieces of breaded chicken.",
+    "image_path": "/assets/nuggets.jpg",
+    "price_cents": 729,
+    "sort_order": 3
+  },
+  {
+    "id": "coca-cola",
+    "name": "Coca-Cola",
+    "category": "Canned drinks",
+    "description": "Classic cola, served chilled.",
+    "image_path": "/assets/cocacola.jpg",
+    "price_cents": 300,
+    "sort_order": 4
+  },
+  {
+    "id": "royal",
+    "name": "Royal",
+    "category": "Canned drinks",
+    "description": "Orange soda, served chilled.",
+    "image_path": "/assets/royal.jpg",
+    "price_cents": 127,
+    "sort_order": 5
+  },
+  {
+    "id": "sprite",
+    "name": "Sprite",
+    "category": "Canned drinks",
+    "description": "Lemon-lime soda, served chilled.",
+    "image_path": "/assets/sprite.jpg",
+    "price_cents": 100,
+    "sort_order": 6
+  },
+  {
+    "id": "mountain-dew",
+    "name": "Mountain Dew",
+    "category": "Canned drinks",
+    "description": "Citrus soda, served chilled.",
+    "image_path": "/assets/mountaindew.jpg",
+    "price_cents": 300,
+    "sort_order": 7
+  },
+  {
+    "id": "chocolate-smoothie",
+    "name": "Chocolate Smoothie",
+    "category": "Smoothies & frappes",
+    "description": "A blended chocolate smoothie.",
+    "image_path": "/assets/chocolateSmoothie.jpg",
+    "price_cents": 254,
+    "sort_order": 8
+  },
+  {
+    "id": "vanilla-smoothie",
+    "name": "Vanilla Smoothie",
+    "category": "Smoothies & frappes",
+    "description": "A blended vanilla smoothie.",
+    "image_path": "/assets/vanillaSmoothie.jpg",
+    "price_cents": 127,
+    "sort_order": 9
+  },
+  {
+    "id": "mocha-frappe",
+    "name": "Mocha Frappe",
+    "category": "Smoothies & frappes",
+    "description": "Espresso and chocolate blended with ice.",
+    "image_path": "/assets/mocha.jpg",
+    "price_cents": 625,
+    "sort_order": 10
+  },
+  {
+    "id": "cookies-and-cream-frappe",
+    "name": "Cookies & Cream Frappe",
+    "category": "Smoothies & frappes",
+    "description": "A chilled blend of chocolate cookies and vanilla.",
+    "image_path": "/assets/cookieFrappe.jpg",
+    "price_cents": 327,
+    "sort_order": 11
+  },
+  {
+    "id": "citrus-burst",
+    "name": "Citrus Burst",
+    "category": "Fruit drinks",
+    "description": "A bright blend of citrus flavors.",
+    "image_path": "/assets/citrus-burst.png",
+    "price_cents": 2232,
+    "sort_order": 12
+  },
+  {
+    "id": "yellow-citrus",
+    "name": "Yellow Citrus",
+    "category": "Fruit drinks",
+    "description": "A sweet and tart citrus drink.",
+    "image_path": "/assets/yellowDrink.jpg",
+    "price_cents": 1027,
+    "sort_order": 13
+  },
+  {
+    "id": "clear-spartan",
+    "name": "Clear Spartan",
+    "category": "Fruit drinks",
+    "description": "A lightly flavored, clear refreshment.",
+    "image_path": "/assets/clearDrink.jpg",
+    "price_cents": 1923,
+    "sort_order": 14
+  }
+]
