@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1152" height="256" viewBox="0 0 1152 256" role="img" aria-labelledby="title subtitle">
+  <title id="title">Yoshiya Storefront</title>
+  <desc id="subtitle">A Full-Stack E-Commerce Project</desc>
+  <defs>
+    <linearGradient id="banner">
+      <stop stop-color="#121624"/>
+      <stop offset=".46" stop-color="#232353"/>
+      <stop offset="1" stop-color="#0b6275"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#banner)" d="M0 0h1152v255c-268 7-454-13-646-27C295 252 133 231 0 217Z"/>
+  <path fill="#0d1117" opacity=".45" d="M0 240c170-25 342-20 506-12 229-30 441-35 646 13v15c-263 3-459-13-646-28-186-15-355-1-506 12Z"/>
+  <g fill="#fff" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <text x="576" y="131" font-size="57" font-weight="750">Yoshiya Storefront</text>
+    <text x="576" y="187" font-size="23" font-weight="600">A Full-Stack E-Commerce Project</text>
+  </g>
+</svg>

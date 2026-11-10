@@ -1,36 +1,70 @@
-<h1 align="center">Yoshiya Storefront</h1>
-
 <p align="center">
-  A full-stack restaurant storefront, from menu discovery to order confirmation.
+  <img src="docs/readme-banner.svg" width="1152" alt="Yoshiya Storefront — A Full-Stack E-Commerce Project">
 </p>
 
 <p align="center">
-  <strong>Next.js · React · TypeScript · Supabase Postgres</strong>
+  <strong>A restaurant storefront that takes shoppers from browsing the menu to submitting an order.</strong>
 </p>
 
 <p align="center">
-  <a href="#try-it-locally">Try it locally</a> ·
-  <a href="#engineering-highlights">Engineering highlights</a> ·
-  <a href="#connect-supabase">Connect Supabase</a>
+  <img src="docs/readme-frontend.svg" alt="Frontend: Next.js">
+  <img src="docs/readme-language.svg" alt="Language: TypeScript">
+  <img src="docs/readme-styling.svg" alt="Styling: CSS">
+  <img src="docs/readme-backend.svg" alt="Backend: Node.js">
+  <br>
+  <img src="docs/readme-database.svg" alt="Database: PostgreSQL">
 </p>
+
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#tech-stack">Tech Stack</a> ·
+  <a href="#project-structure">Project Structure</a> ·
+  <a href="#getting-started">Getting Started</a>
+</p>
+
+---
+
+## Overview
+
+Yoshiya rebuilds an earlier food and drinks storefront around a complete ordering flow. The rebuild carries forward the original 15-item menu and product photography, adds a credential-free demo, and moves order submission into a single Postgres transaction.
 
 ![Yoshiya storefront homepage with a warm cream layout and photographs of a burger, fried chicken, fries, and a mocha frappe](docs/storefront-preview.webp)
 
-## The project
+## Features
 
-Yoshiya rebuilds an earlier food and drinks storefront around a complete ordering flow. Browse 15 menu items, filter by category or search by name, open product details, and add items to a bag that survives a refresh. Scroll through the featured burger to see its layers assemble from the original product photo.
+- **Searchable menu.** Search by product name, filter by category, and open individual product pages.
+- **Persistent bag.** Update quantities and refresh the page without losing the bag.
+- **Scroll-driven burger assembly.** Layers from the original product photo come together as visitors scroll. Reduced-motion settings show the assembled burger.
 
-## Engineering highlights
+### Engineering highlights
 
 | Area | Implementation |
 | --- | --- |
-| **Motion and accessibility** | Scroll position drives the burger assembly. The section shows the assembled burger when reduced motion is enabled. [View component](components/burger-assembly.tsx) |
 | **Demo without credentials** | A bundled catalog and simulated receipt let reviewers try the ordering flow locally. Demo orders do not store submitted details. [View data layer](lib/store.ts) |
 | **Checkout validation** | The API validates contact details and quantities. Postgres rechecks availability and prices and writes the order and line items in one transaction. [View order route](app/api/orders/route.ts) |
 | **Safe retries** | Submitting the same request ID with the same details returns the existing receipt. A reused ID with different details returns a conflict. [View SQL migration](supabase/migrations/20261109000100_storefront.sql) |
 | **Data access** | Anonymous users can read available products. The server-side checkout uses a separate key to submit orders. [View access policies](supabase/migrations/20261109000100_storefront.sql) |
 
-## Try it locally
+## Tech Stack
+
+| Layer | Tools |
+| --- | --- |
+| Interface | Next.js App Router, React, TypeScript, CSS |
+| Server | Node.js and Next.js Route Handlers |
+| Data | Supabase, PostgreSQL, SQL migrations, and row-level security |
+
+## Project Structure
+
+| Directory | What you'll find |
+| --- | --- |
+| [`app/`](app) | Storefront, product pages, cart, and order endpoint |
+| [`components/`](components) | Menu filters, browser-local bag, and burger animation |
+| [`lib/`](lib) | Catalog access, checkout validation, and order submission |
+| [`data/`](data) | Bundled demo catalog |
+| [`supabase/migrations/`](supabase/migrations) | Database schema, checkout function, and catalog seed |
+
+## Getting Started
 
 Use Node.js 20.9 or later.
 

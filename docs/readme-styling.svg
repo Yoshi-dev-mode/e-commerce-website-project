@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="28" viewBox="0 0 132 28">
+  <title>STYLING — CSS</title>
+  <path fill="#50545b" d="M0 0h76v28H0z"/>
+  <path fill="#007d91" d="M76 0h56v28h-56z"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana, sans-serif" font-size="10.5" letter-spacing="1.2">
+    <text x="38" y="18">STYLING</text>
+    <text x="104" y="18" font-weight="700">CSS</text>
+  </g>
+</svg>

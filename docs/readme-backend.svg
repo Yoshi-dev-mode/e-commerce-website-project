@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="28" viewBox="0 0 160 28">
+  <title>BACKEND — NODE.JS</title>
+  <path fill="#50545b" d="M0 0h79v28H0z"/>
+  <path fill="#287934" d="M79 0h81v28h-81z"/>
+  <g fill="#fff" text-anchor="middle" font-family="Verdana, sans-serif" font-size="10.5" letter-spacing="1.2">
+    <text x="39.5" y="18">BACKEND</text>
+    <text x="119.5" y="18" font-weight="700">NODE.JS</text>
+  </g>
+</svg>
