@@ -7,7 +7,6 @@
 
 .hero {
   --direction: 1;
-  --clip-end: inset(0 100% 0 0);
   position: sticky;
   top: var(--header-height);
   isolation: isolate;
@@ -18,13 +17,15 @@
   color: #30202d;
 }
 
-.scene[data-direction="-1"] .hero { --direction: -1; --clip-end: inset(0 0 0 100%); }
+.scene[data-direction="-1"] .hero { --direction: -1; }
 .stage, .slide { position: absolute; inset: 0; overflow: hidden; }
-.stage { z-index: -1; touch-action: pan-y; user-select: none; }
+.stage { z-index: -1; touch-action: pan-y; user-select: none; background-color: var(--hero-nav-color); }
 .slide { display: grid; place-items: center; }
 .slide[data-state="hidden"] { visibility: hidden; }
-.slide[data-state="leaving"] { z-index: 2; animation: wipe 970ms cubic-bezier(.75,0,.25,1) both; }
-.slide[data-state="entering"] { z-index: 1; }
+.slide[data-state="leaving"] { z-index: 2; animation: fade-out 550ms var(--motion-ease) both; }
+.slide[data-state="entering"] { z-index: 1; animation: fade-in 700ms var(--motion-ease) both; }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; } }
 
 .word {
   color: #fffaf7;
@@ -65,10 +66,6 @@
 }
 .slide[data-state="entering"] .word { animation: arrive 570ms 360ms cubic-bezier(.2,.8,.2,1) both; --shift: 24vw; }
 .slide[data-state="entering"] .drink { animation: arrive 530ms 420ms cubic-bezier(.2,.8,.2,1) both; --shift: 11vw; }
-@keyframes wipe {
-  from { clip-path: inset(0); }
-  to { clip-path: var(--clip-end); }
-}
 @keyframes arrive { from { transform: translateX(calc(var(--shift) * var(--direction))); } }
 
 .top, .controls {

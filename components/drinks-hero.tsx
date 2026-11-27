@@ -61,8 +61,10 @@ export function DrinksHero({ demo }: { demo: boolean }) {
           }, 1000);
         }
       }
-      if (bounds.bottom > top) root.style.setProperty("--hero-nav-color", drinks[active.current].color);
-      else root.style.removeProperty("--hero-nav-color");
+      const color = bounds.bottom > top ? drinks[active.current].color : "var(--paper)";
+      if (root.style.getPropertyValue("--hero-nav-color") !== color) {
+        root.style.setProperty("--hero-nav-color", color);
+      }
     }
 
     update();
@@ -77,7 +79,7 @@ export function DrinksHero({ demo }: { demo: boolean }) {
   }, []);
 
   return (
-    <section ref={scene} className={styles.scene} aria-label="Yoshiya drinks showcase"
+    <section ref={scene} className={styles.scene} aria-label="Yoshiya drinks showcase" data-drinks-hero
       data-direction={direction}
       onKeyDown={(event) => {
         if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
@@ -105,7 +107,7 @@ export function DrinksHero({ demo }: { demo: boolean }) {
           }
         }}>
         {drinks.map((drink, slide) => (
-          <div key={drink.image} className={styles.slide} style={{ backgroundColor: drink.color }}
+          <div key={drink.image} className={styles.slide}
             data-state={slide === previous ? "leaving" : slide === index ? previous === undefined ? "current" : "entering" : "hidden"}
             aria-hidden="true">
             <span className={styles.word}>{drink.image === "kiwi-lime" ? "Kiwi" : drink.name}</span>
