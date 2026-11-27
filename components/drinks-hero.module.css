@@ -1,0 +1,112 @@
+.scene {
+  --header-height: 73px;
+  scroll-margin-top: var(--header-height);
+  --frame-height: max(540px, calc(100svh - var(--header-height)));
+  min-height: calc(var(--frame-height) + 225svh);
+}
+
+.hero {
+  --direction: 1;
+  position: sticky;
+  top: var(--header-height);
+  isolation: isolate;
+  min-height: var(--frame-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #30202d;
+}
+
+.scene[data-direction="-1"] .hero { --direction: -1; }
+.stage, .slide { position: absolute; inset: 0; overflow: hidden; }
+.stage { z-index: -1; touch-action: pan-y; user-select: none; background-color: var(--hero-nav-color); }
+.slide { display: grid; place-items: center; }
+.slide[data-state="hidden"] { visibility: hidden; }
+.slide[data-state="leaving"] { z-index: 2; animation: fade-out 550ms var(--motion-ease) both; }
+.slide[data-state="entering"] { z-index: 1; animation: fade-in 700ms var(--motion-ease) both; }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; } }
+
+.word {
+  color: #fffaf7;
+  font-size: clamp(3rem, 13.4vw, 15rem);
+  font-weight: 850;
+  letter-spacing: -.04em;
+  line-height: .95;
+  white-space: nowrap;
+}
+.fruit { position: absolute; inset: 0; background-size: 0 0; pointer-events: none; }
+.fruit span {
+  position: absolute;
+  width: clamp(55px, 10vw, 155px);
+  aspect-ratio: 1;
+  background-image: inherit;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(6px 12px 8px #30202d30);
+}
+.fruit span:nth-child(1) { left: 25%; top: 19%; rotate: -24deg; }
+.fruit span:nth-child(2) { right: 22%; top: 27%; rotate: 20deg; }
+.fruit span:nth-child(3) { left: 18%; bottom: 24%; rotate: 30deg; }
+.fruit span:nth-child(4) { right: 15%; bottom: 18%; rotate: -34deg; }
+.fruit span:nth-child(5), .fruit span:nth-child(6) {
+  width: clamp(116px, 17vw, 250px);
+  filter: blur(8px);
+}
+.fruit span:nth-child(5) { bottom: 3%; left: 1%; rotate: -18deg; }
+.fruit span:nth-child(6) { top: 1%; right: 0; rotate: 24deg; }
+.slide[data-state="entering"] .fruit { animation: arrive 530ms 420ms cubic-bezier(.2,.8,.2,1) both; --shift: 32vw; }
+.drink {
+  position: absolute;
+  width: min(72vw, 465px);
+  height: min(63svh, 580px);
+  object-fit: contain;
+  filter: drop-shadow(9px 14px 12px #35232135);
+}
+.slide[data-state="entering"] .word { animation: arrive 570ms 360ms cubic-bezier(.2,.8,.2,1) both; --shift: 24vw; }
+.slide[data-state="entering"] .drink { animation: arrive 530ms 420ms cubic-bezier(.2,.8,.2,1) both; --shift: 11vw; }
+@keyframes arrive { from { transform: translateX(calc(var(--shift) * var(--direction))); } }
+
+.top, .controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px clamp(14px, 4vw, 60px);
+  pointer-events: none;
+}
+.top button, .controls button, .controls a { pointer-events: auto; }
+.demo { position: absolute; inset-inline-start: clamp(14px, 4vw, 60px); font-size: .78rem; }
+.flavours { display: flex; gap: clamp(3px, 3vw, 45px); }
+.hero button {
+  min-height: 44px;
+  padding: 0 8px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  font-weight: 650;
+}
+.flavours button { border-bottom: 2px solid transparent; font-size: clamp(.78rem, 2vw, 1.05rem); }
+.flavours button:hover, .flavours button[aria-pressed="true"] { border-color: currentColor; }
+.controls { justify-content: space-between; padding-bottom: 20px; }
+.controls > button { width: 48px; display: grid; place-items: center; }
+.controls > button:hover { background: #fff5; border-radius: 50%; }
+.controls svg { width: 24px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.actions { display: grid; justify-items: center; }
+.actions a { font-weight: 750; letter-spacing: .14em; text-transform: uppercase; padding: 10px; }
+.actions a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.hint { font-size: .8rem; padding-bottom: 6px; }
+
+@media (max-width: 700px) {
+  .scene {
+    --header-height: 63px;
+    --frame-height: max(550px, calc(100svh - var(--header-height)));
+  }
+  .top { flex-direction: column; gap: 3px; }
+  .demo { position: static; }
+  .drink { height: min(54svh, 470px); }
+  .fruit span:nth-child(1), .fruit span:nth-child(2) { top: 25%; }
+  .fruit span:nth-child(3) { left: 7%; }
+  .fruit span:nth-child(4) { right: 5%; }
+  .fruit span:nth-child(5), .fruit span:nth-child(6) { display: none; }
+}
