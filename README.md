@@ -20,22 +20,22 @@
   <a href="#features">Features</a> ·
   <a href="#tech-stack">Tech Stack</a> ·
   <a href="#project-structure">Project Structure</a> ·
-  <a href="#getting-started">Getting Started</a>
+  <a href="#getting-started">Getting Started</a> ·
+  <a href="#connect-supabase">Connect Supabase</a>
 </p>
 
 ---
 
 ## Overview
 
-Yoshiya rebuilds an earlier food and drinks storefront around a complete ordering flow. The rebuild carries forward the original 15-item menu and product photography, adds a credential-free demo, and moves order submission into a single Postgres transaction.
-
-![Yoshiya storefront homepage with a warm cream layout and photographs of a burger, fried chicken, fries, and a mocha frappe](docs/storefront-preview.webp)
+Yoshiya is a food and drinks storefront with an interactive homepage, a searchable 15-item menu, and delivery order requests. The menu and checkout run locally in demo mode or connect to Supabase for live catalog and order data.
 
 ## Features
 
-- **Searchable menu.** Search by product name, filter by category, and open individual product pages.
-- **Persistent bag.** Update quantities and refresh the page without losing the bag.
-- **Scroll-driven burger assembly.** Layers from the original product photo come together as visitors scroll. Reduced-motion settings show the assembled burger.
+- **Scroll-controlled drinks showcase.** Explore Dragon Fruit, Kiwi Lime, Pineapple, and Blue Citrus as you scroll. The hero and navbar share the same animated background. Flavour buttons, arrows, and horizontal swipe also change slides. [View the showcase component](components/drinks-hero.tsx)
+- **Scroll-driven burger assembly.** Watch the burger layers stack, then select **Find the burger** to jump to its menu card. With reduced motion enabled, the burger appears assembled and flavour changes are instant.
+- **Searchable menu and persistent bag.** Search or filter the catalog, open individual product pages, and edit quantities in a bag saved in your browser.
+- **Delivery checkout.** Enter delivery details and submit an order request. The confirmation shows an order reference and item total.
 
 ### Engineering highlights
 
@@ -59,7 +59,7 @@ Yoshiya rebuilds an earlier food and drinks storefront around a complete orderin
 | Directory | What you'll find |
 | --- | --- |
 | [`app/`](app) | Storefront, product pages, cart, and order endpoint |
-| [`components/`](components) | Menu filters, browser-local bag, and burger animation |
+| [`components/`](components) | Drinks showcase, burger animation, menu filters, shopping bag, and checkout |
 | [`lib/`](lib) | Catalog access, checkout validation, and order submission |
 | [`data/`](data) | Bundled demo catalog |
 | [`supabase/migrations/`](supabase/migrations) | Database schema, checkout function, and catalog seed |
@@ -94,7 +94,7 @@ supabase db push --dry-run
 supabase db push
 ```
 
-Run `supabase init` once if the checkout lacks a Supabase configuration. Copy `.env.example` to `.env.local`, fill in the following values from your Supabase project settings, and restart Next.js. [View environment template](.env.example)
+Run `supabase init` once if the checkout lacks a Supabase configuration. If your project already has the migrations applied, skip the migration commands. Copy `.env.example` to `.env.local`, fill in all three values from your Supabase project settings, and restart Next.js. [View environment template](.env.example)
 
 | Variable | Purpose |
 | --- | --- |
