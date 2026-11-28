@@ -29,7 +29,7 @@
 
 Yoshiya rebuilds an earlier food and drinks storefront around a complete ordering flow. The rebuild carries forward the original 15-item menu and product photography, adds a credential-free demo, and moves order submission into a single Postgres transaction.
 
-![Yoshiya storefront homepage with a warm cream layout and photographs of a burger, fried chicken, fries, and a mocha frappe](docs/storefront-preview.webp)
+![Yoshiya homepage showing the Dragon Fruit slide of the scroll-controlled drinks showcase](docs/storefront-preview.webp)
 
 ## Features
 
